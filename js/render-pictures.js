@@ -14,8 +14,10 @@ const createPicture = ({url, description, likes, comments}) => {
   return newPicture;
 };
 
-const picturesFragment = document.createDocumentFragment();
+const renderPictures = (pictures) => {
+  const picturesFragment = document.createDocumentFragment();
+  pictures.map((picture) => picturesFragment.append(createPicture(picture)));
+  picturesContainerElement.append(picturesFragment);
+};
 
-photos.map((photo) => picturesFragment.append(createPicture(photo)));
-
-picturesContainerElement.append(picturesFragment);
+renderPictures(photos);
